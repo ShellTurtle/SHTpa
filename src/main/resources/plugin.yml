@@ -1,0 +1,16 @@
+name: STPA
+version: '1.0'
+main: net.shserver.stpa
+api-version: '1.21'
+authors: [ ShellTurtle ]
+description: 传送插件
+website: stap.shserver.net
+commands:
+  tpa:
+    description: 传送至他人位置
+    permission: stpa.tpa
+    aliases: tpa
+  tpahere:
+    description: 将他人传送至此处
+    permission: stpa.tpahere
+    aliases: tpahere
