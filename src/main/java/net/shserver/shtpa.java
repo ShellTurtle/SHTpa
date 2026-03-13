@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Logger;
 
-public final class stpa extends JavaPlugin {
+public final class shtpa extends JavaPlugin {
 
     public final Logger logger = getLogger();
     @Override
