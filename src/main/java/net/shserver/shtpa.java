@@ -9,7 +9,7 @@ public final class shtpa extends JavaPlugin {
     public final Logger logger = getLogger();
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        // 插件加载
         logger.info("插件加载完成");
         Bukkit.getServer().getPluginManager().registerEvents(new playerJoinListener(),this);
         Bukkit.getPluginCommand("tpa").setExecutor(new tpaCommand());
@@ -19,6 +19,6 @@ public final class shtpa extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        // 插件卸载
     }
 }

@@ -14,16 +14,17 @@ public class tpaCommand implements CommandExecutor {
         Player player = Bukkit.getPlayer(strings[0]);
         Player sender = (Player) commandSender;
         var sender_location = sender.getLocation();
-        if(player.isOnline()) {
+        if(player.isOnline() && sender != player) {
             sender.teleport(player.getLocation());
             player.getWorld().playSound(sender_location, Sound.ENTITY_PLAYER_LEVELUP, 1, 5);
-            sender.sendMessage(ChatColor.YELLOW + "已传送到" + player.getName());
+            sender.sendMessage(ChatColor.AQUA + "已传送到" + ChatColor.YELLOW +player.getName());
             return true;
         }
-        else {
-            if(!player.isOnline()) {
-                sender.sendMessage(ChatColor.YELLOW + "无法传送到" + player.getName() + ChatColor.YELLOW + "该玩家可能不在线");
-            }
+        if(!player.isOnline()) {
+            sender.sendMessage(ChatColor.AQUA + "无法传送到" + ChatColor.YELLOW +player.getName() + ChatColor.AQUA + "该玩家可能不在线");
+        }
+        if(sender == player) {
+            sender.sendMessage(ChatColor.AQUA + "无法传送至自己！");
         }
         return false;
     }

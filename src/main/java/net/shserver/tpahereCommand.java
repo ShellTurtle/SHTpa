@@ -14,16 +14,17 @@ public class tpahereCommand implements CommandExecutor {
         Player player = Bukkit.getPlayer(strings[0]);
         Player sender = (Player) commandSender;
         var sneder_location = sender.getLocation();
-        if(player.isOnline()) {
+        if(player.isOnline() && sender != player) {
             player.teleport(sender.getLocation());
             player.getWorld().playSound(sneder_location, Sound.ENTITY_PLAYER_LEVELUP, 1, 5);
-            sender.sendMessage(ChatColor.YELLOW + "已将" + player.getName() + ChatColor.YELLOW +"此处");
+            sender.sendMessage(ChatColor.AQUA + "已将" + ChatColor.YELLOW + player.getName() + ChatColor.AQUA +"此处");
             return true;
         }
-        else {
-            if(!player.isOnline()) {
-                sender.sendMessage(ChatColor.YELLOW + "无法将" + player.getName() + ChatColor.YELLOW + "传送到此处" + ChatColor.YELLOW + "该玩家可能不在线");
+        if(!player.isOnline()) {
+            sender.sendMessage(ChatColor.AQUA + "无法将" + ChatColor.YELLOW +player.getName() + ChatColor.AQUA + "传送到此处，该玩家可能不在线");
             }
+        if(sender == player) {
+            sender.sendMessage(ChatColor.AQUA + "无法传送至自己！");
         }
         return false;
     }
