@@ -3,7 +3,7 @@ version: '1.0'
 main: net.shserver.shtpa
 api-version: '1.21'
 authors: [ ShellTurtle ]
-description: 传送插件
+description: Tpa传送插件
 website: github.com/ShellTurtle/SHTpa
 commands:
   tpa:

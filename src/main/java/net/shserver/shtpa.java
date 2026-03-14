@@ -2,6 +2,7 @@ package net.shserver;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public final class shtpa extends JavaPlugin {
@@ -12,8 +13,8 @@ public final class shtpa extends JavaPlugin {
         // 插件加载
         logger.info("插件加载完成");
         Bukkit.getServer().getPluginManager().registerEvents(new playerJoinListener(),this);
-        Bukkit.getPluginCommand("tpa").setExecutor(new tpaCommand());
-        Bukkit.getPluginCommand("tpahere").setExecutor(new tpahereCommand());
+        Objects.requireNonNull(Bukkit.getPluginCommand("tpa")).setExecutor(new tpaCommand());
+        Objects.requireNonNull(Bukkit.getPluginCommand("tpahere")).setExecutor(new tpahereCommand());
 
     }
 

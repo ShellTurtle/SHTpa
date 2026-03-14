@@ -12,7 +12,7 @@ public class tpahereCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NonNull CommandSender commandSender, org.bukkit.command.@NonNull Command command, @NonNull String s, String @NonNull [] strings) {
         Player player = Bukkit.getPlayer(strings[0]);
-        Player sender = (Player) commandSender;
+        Player sender = Bukkit.getPlayer(commandSender.getName());
         var sneder_location = sender.getLocation();
         if(player.isOnline() && sender != player) {
             player.teleport(sender.getLocation());
@@ -20,12 +20,16 @@ public class tpahereCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.AQUA + "已将" + ChatColor.YELLOW + player.getName() + ChatColor.AQUA +"此处");
             return true;
         }
-        if(!player.isOnline()) {
-            sender.sendMessage(ChatColor.AQUA + "无法将" + ChatColor.YELLOW +player.getName() + ChatColor.AQUA + "传送到此处，该玩家可能不在线");
+
+        else {
+            if (sender == player) {
+                sender.sendMessage(ChatColor.AQUA + "无法传送至自己！");
             }
-        if(sender == player) {
-            sender.sendMessage(ChatColor.AQUA + "无法传送至自己！");
+
+            else {
+                sender.sendMessage(ChatColor.AQUA + "无法将" + ChatColor.YELLOW + player.getName() + ChatColor.AQUA + "传送到此处，该玩家可能不存在");
+            }
+            return true;
         }
-        return false;
     }
 }
